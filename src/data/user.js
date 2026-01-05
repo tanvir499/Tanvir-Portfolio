@@ -35,7 +35,7 @@ const INFO = {
 
 	skills: {
 		title: "Technical Skills & Expertise",
-		description: "A comprehensive overview of my technical skills and proficiency levels across different domains.",
+		description: "A comprehensive overview of my technical skills and proficiency levels across different domains of modern web development.",
 		categories: [
 			{
 				name: "Frontend Development",
@@ -48,7 +48,9 @@ const INFO = {
 					{ name: "TypeScript", level: 80, icon: "🔷" },
 					{ name: "Tailwind CSS", level: 85, icon: "🎨" },
 					{ name: "Bootstrap", level: 85, icon: "🅱️" },
-					{ name: "SASS/SCSS", level: 80, icon: "💗" }
+					{ name: "SASS/SCSS", level: 80, icon: "💗" },
+					{ name: "Next.js", level: 85, icon: "▲" },
+					{ name: "Vue.js", level: 75, icon: "💚" }
 				]
 			},
 			{
@@ -59,10 +61,12 @@ const INFO = {
 					{ name: "Express.js", level: 85, icon: "⚡" },
 					{ name: "MongoDB", level: 80, icon: "🍃" },
 					{ name: "MySQL", level: 75, icon: "🐬" },
+					{ name: "PostgreSQL", level: 70, icon: "🐘" },
 					{ name: "RESTful APIs", level: 90, icon: "🔗" },
 					{ name: "GraphQL", level: 70, icon: "📊" },
 					{ name: "JWT Authentication", level: 85, icon: "🔐" },
-					{ name: "Socket.io", level: 75, icon: "🔌" }
+					{ name: "Socket.io", level: 75, icon: "🔌" },
+					{ name: "Redis", level: 65, icon: "🔴" }
 				]
 			},
 			{
@@ -72,11 +76,13 @@ const INFO = {
 					{ name: "Git & GitHub", level: 90, icon: "🐙" },
 					{ name: "VS Code", level: 95, icon: "💙" },
 					{ name: "Webpack", level: 75, icon: "📦" },
+					{ name: "Vite", level: 80, icon: "⚡" },
 					{ name: "Docker", level: 70, icon: "🐳" },
 					{ name: "AWS", level: 65, icon: "☁️" },
 					{ name: "Postman", level: 85, icon: "📮" },
 					{ name: "Figma", level: 80, icon: "🎨" },
-					{ name: "NPM/Yarn", level: 90, icon: "📦" }
+					{ name: "NPM/Yarn", level: 90, icon: "📦" },
+					{ name: "Jest", level: 75, icon: "🃏" }
 				]
 			}
 		]

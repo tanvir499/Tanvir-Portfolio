@@ -1,20 +1,49 @@
 @import "/src/data/styles.css";
 
+/* Smooth Scrolling Styles */
+html {
+	scroll-behavior: auto; /* Disable default smooth scroll */
+	overflow-x: hidden;
+}
+
+body {
+	margin: 0;
+	padding: 0;
+	overflow-x: hidden;
+	font-family: var(--primary-font);
+	/* Improve text rendering during scroll */
+	-webkit-font-smoothing: antialiased;
+	-moz-osx-font-smoothing: grayscale;
+}
+
+/* Optimize for smooth scrolling performance */
+* {
+	-webkit-transform: translateZ(0);
+	-moz-transform: translateZ(0);
+	-ms-transform: translateZ(0);
+	-o-transform: translateZ(0);
+	transform: translateZ(0);
+}
+
+/* Custom Scrollbar - More subtle */
 ::-webkit-scrollbar {
-	width: 10px;
+	width: 8px;
 }
 
 ::-webkit-scrollbar-track {
-	background-color: #f1f1f1;
+	background-color: rgba(241, 241, 241, 0.5);
 }
 
 ::-webkit-scrollbar-thumb {
-	background-color: #383636;
-	border-radius: 5px;
+	background-color: var(--link-color);
+	border-radius: 4px;
+	transition: background-color 0.3s ease;
+	opacity: 0.7;
 }
 
 ::-webkit-scrollbar-thumb:hover {
-	background-color: rgb(0, 0, 0);
+	background-color: #0d9488;
+	opacity: 1;
 }
 
 .page-content {

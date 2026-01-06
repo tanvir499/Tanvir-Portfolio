@@ -1,0 +1,627 @@
+/* Clean Skills Section - Matching Project Theme */
+.skills-section {
+    position: relative;
+    padding: 100px 0;
+    background: transparent; /* Remove background color */
+    min-height: auto;
+}
+
+/* Header Section */
+.skills-header {
+    text-align: center;
+    margin-bottom: 60px;
+    max-width: 800px;
+    margin-left: auto;
+    margin-right: auto;
+    padding: 0 20px;
+}
+
+.skills-title {
+    font-size: 3rem;
+    font-weight: 800;
+    margin-bottom: 20px;
+    color: var(--primary-color); /* Use project's primary color */
+    letter-spacing: -0.02em;
+    position: relative;
+    display: inline-block;
+}
+
+.title-animated {
+    display: inline-block;
+}
+
+.title-word {
+    display: inline-block;
+    margin-right: 0.3em;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    position: relative;
+    transform-origin: center bottom;
+}
+
+.title-word:last-child {
+    margin-right: 0;
+}
+
+.title-word::after {
+    content: '';
+    position: absolute;
+    bottom: -4px;
+    left: 0;
+    width: 0;
+    height: 3px;
+    background: linear-gradient(90deg, var(--link-color), #8b5cf6, #06b6d4);
+    transition: width 0.3s ease;
+    border-radius: 2px;
+}
+
+.title-word:hover::after {
+    width: 100%;
+}
+
+/* Animated underline */
+.title-underline {
+    position: absolute;
+    bottom: -8px;
+    left: 0;
+    height: 4px;
+    background: linear-gradient(90deg, var(--link-color), #8b5cf6, #06b6d4, #10b981);
+    border-radius: 2px;
+    box-shadow: 0 0 10px rgba(20, 184, 166, 0.4); /* Use project's link color */
+}
+
+/* Add a subtle glow effect */
+.skills-title:hover .title-word {
+    text-shadow: 0 0 20px rgba(20, 184, 166, 0.3); /* Use project's link color */
+}
+
+/* Breathing animation for the title */
+@keyframes breathe {
+    0%, 100% {
+        transform: scale(1);
+    }
+    50% {
+        transform: scale(1.02);
+    }
+}
+
+.skills-title:hover {
+    animation: breathe 2s ease-in-out infinite;
+}
+
+.skills-description {
+    font-size: 1.2rem;
+    color: var(--secondary-color); /* Use project's secondary color */
+    line-height: 1.6;
+    font-weight: 400;
+}
+
+/* Category Navigation */
+.category-nav {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    margin: 60px 0;
+    flex-wrap: wrap;
+    max-width: 800px;
+    margin-left: auto;
+    margin-right: auto;
+    padding: 0 20px;
+}
+
+.category-btn {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 16px 24px;
+    background: white;
+    border: 2px solid var(--quaternary-color); /* Use project's quaternary color */
+    border-radius: 12px;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    font-weight: 600;
+    color: var(--secondary-color); /* Use project's secondary color */
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+    position: relative;
+    min-width: 160px;
+    justify-content: center;
+}
+
+.category-btn:hover {
+    border-color: var(--link-color); /* Use project's link color */
+    color: var(--link-color);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    transform: translateY(-1px);
+}
+
+.category-btn.active {
+    background: var(--link-color); /* Use project's link color */
+    border-color: var(--link-color);
+    color: white;
+    box-shadow: 0 4px 12px rgba(20, 184, 166, 0.3); /* Use project's link color with opacity */
+}
+
+.category-icon {
+    font-size: 1.2rem;
+}
+
+.category-name {
+    font-size: 0.95rem;
+}
+
+.skill-count {
+    background: rgba(255, 255, 255, 0.2);
+    color: inherit;
+    font-size: 0.8rem;
+    font-weight: 700;
+    padding: 2px 6px;
+    border-radius: 6px;
+    min-width: 20px;
+    text-align: center;
+}
+
+.category-btn:not(.active) .skill-count {
+    background: var(--quaternary-color); /* Use project's quaternary color */
+    color: var(--secondary-color); /* Use project's secondary color */
+}
+
+/* Skills Display */
+.skills-display {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+.skill-category {
+    display: none;
+}
+
+.skill-category.active {
+    display: block;
+}
+
+.category-header {
+    text-align: center;
+    margin-bottom: 50px;
+}
+
+.category-title {
+    font-size: 2.2rem;
+    font-weight: 700;
+    color: var(--primary-color); /* Use project's primary color */
+    margin: 0 0 10px 0;
+}
+
+.category-subtitle {
+    font-size: 1.1rem;
+    color: var(--secondary-color); /* Use project's secondary color */
+    font-weight: 400;
+}
+
+/* Skills Grid */
+.skills-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 24px;
+    margin-bottom: 60px;
+}
+
+/* Clean Skill Cards */
+.skill-card {
+    background: white !important;
+    border: 1px solid var(--quaternary-color);
+    border-radius: 16px;
+    padding: 24px;
+    transition: all 0.2s ease;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+    position: relative;
+}
+
+.skill-card:hover {
+    border-color: var(--category-color);
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1);
+    background: white !important;
+}
+
+.skill-icon-wrapper {
+    margin-bottom: 16px;
+}
+
+.skill-icon {
+    font-size: 2.5rem;
+    transition: all 0.3s ease;
+    filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.1));
+}
+
+.skill-card:hover .skill-icon {
+    transform: scale(1.1);
+    filter: drop-shadow(0 4px 8px rgba(0, 0, 0, 0.15));
+}
+
+/* Brand color icon enhancements */
+.skill-icon-wrapper {
+    margin-bottom: 16px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 60px;
+}
+
+/* Add subtle glow effect for brand colored icons */
+.skill-card:hover .skill-icon {
+    filter: drop-shadow(0 4px 8px rgba(0, 0, 0, 0.15)) 
+            drop-shadow(0 0 12px currentColor);
+    opacity: 0.9;
+}
+
+.skill-name {
+    font-size: 1.2rem;
+    font-weight: 600;
+    color: #27272a !important;
+    margin: 0 0 20px 0;
+}
+
+/* Progress Container */
+.progress-container {
+    margin-bottom: 16px;
+}
+
+.progress-info {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 8px;
+}
+
+.progress-label {
+    font-size: 0.9rem;
+    color: #65656d !important;
+    font-weight: 500;
+}
+
+.progress-percentage {
+    font-size: 0.9rem;
+    font-weight: 700;
+    color: #27272a !important;
+}
+
+.progress-bar {
+    width: 100%;
+    height: 8px;
+    background: var(--quaternary-color); /* Use project's quaternary color */
+    border-radius: 4px;
+    overflow: hidden;
+}
+
+.progress-fill {
+    height: 100%;
+    border-radius: 4px;
+    transition: width 0.3s ease;
+}
+
+/* Skill Badge */
+.skill-badge {
+    display: inline-block;
+    padding: 6px 12px;
+    border: 1px solid;
+    border-radius: 20px;
+    font-size: 0.8rem;
+    font-weight: 600;
+    text-align: center;
+}
+
+/* Stats Dashboard */
+.stats-dashboard {
+    max-width: 1000px;
+    margin: 80px auto 0;
+    padding: 0 20px;
+    text-align: center;
+}
+
+.stats-title {
+    font-size: 2.2rem;
+    font-weight: 700;
+    color: var(--primary-color); /* Use project's primary color */
+    margin-bottom: 40px;
+}
+
+.stats-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 24px;
+}
+
+.stat-card {
+    background: white;
+    border: 1px solid var(--quaternary-color); /* Use project's quaternary color */
+    border-radius: 16px;
+    padding: 32px 24px;
+    text-align: center;
+    transition: all 0.2s ease;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+}
+
+.stat-card:hover {
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1);
+    border-color: var(--tertiary-color); /* Use project's tertiary color */
+}
+
+.stat-icon {
+    font-size: 2.5rem;
+    margin-bottom: 12px;
+    display: block;
+}
+
+.stat-number {
+    font-size: 2.5rem;
+    font-weight: 800;
+    color: var(--link-color); /* Use project's link color */
+    display: block;
+    margin-bottom: 8px;
+}
+
+.stat-label {
+    font-size: 1rem;
+    color: var(--secondary-color); /* Use project's secondary color */
+    font-weight: 500;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .skills-section {
+        padding: 60px 0;
+    }
+    
+    .skills-title {
+        font-size: 2.5rem;
+    }
+    
+    .skills-description {
+        font-size: 1.1rem;
+    }
+    
+    .category-nav {
+        flex-direction: column;
+        align-items: center;
+        gap: 12px;
+        margin: 40px 0;
+    }
+    
+    .category-btn {
+        width: 100%;
+        max-width: 280px;
+    }
+    
+    .category-title {
+        font-size: 1.8rem;
+    }
+    
+    .skills-grid {
+        grid-template-columns: 1fr;
+        gap: 20px;
+    }
+    
+    .skill-card {
+        padding: 20px;
+    }
+    
+    .skill-icon {
+        font-size: 2rem;
+    }
+    
+    .stats-grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 16px;
+    }
+    
+    .stats-title {
+        font-size: 1.8rem;
+    }
+    
+    .stat-card {
+        padding: 24px 16px;
+    }
+    
+    .stat-number {
+        font-size: 2rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .skills-title {
+        font-size: 2rem;
+    }
+    
+    .category-title {
+        font-size: 1.5rem;
+    }
+    
+    .skills-grid {
+        gap: 16px;
+    }
+    
+    .stats-grid {
+        grid-template-columns: 1fr;
+    }
+    
+    .stat-number {
+        font-size: 1.8rem;
+    }
+}
+
+/* Dark mode support - Force white background for skill cards */
+@media (prefers-color-scheme: dark) {
+    .skills-section {
+        background: transparent;
+    }
+    
+    .skills-title,
+    .category-title {
+        color: var(--quaternary-color);
+    }
+    
+    .skills-description,
+    .category-subtitle {
+        color: var(--tertiary-color);
+    }
+    
+    .category-btn {
+        background: var(--primary-color);
+        border-color: var(--secondary-color);
+        color: var(--quaternary-color);
+    }
+    
+    .category-btn:hover {
+        background: var(--secondary-color);
+    }
+    
+    /* Keep skill cards white even in dark mode */
+    .skill-card {
+        background: white !important;
+        border-color: var(--quaternary-color);
+    }
+    
+    .skill-card:hover {
+        background: white !important;
+    }
+    
+    /* Ensure text remains readable on white background */
+    .skill-card .skill-name {
+        color: #27272a !important;
+    }
+    
+    .skill-card .progress-label {
+        color: #65656d !important;
+    }
+    
+    .skill-card .progress-percentage {
+        color: #27272a !important;
+    }
+    
+    .stat-card {
+        background: var(--primary-color);
+        border-color: var(--secondary-color);
+        color: var(--quaternary-color);
+    }
+    
+    .stat-number {
+        color: var(--quaternary-color);
+    }
+    
+    .stat-label {
+        color: var(--tertiary-color);
+    }
+    
+    .progress-bar {
+        background: var(--secondary-color);
+    }
+    
+    .category-btn:not(.active) .skill-count {
+        background: var(--secondary-color);
+        color: var(--tertiary-color);
+    }
+}
+
+/* High contrast mode */
+@media (prefers-contrast: high) {
+    .skill-card,
+    .stat-card,
+    .category-btn {
+        border-width: 2px;
+    }
+}
+
+/* Reduced motion */
+@media (prefers-reduced-motion: reduce) {
+    .skill-card,
+    .category-btn,
+    .stat-card,
+    .skill-icon,
+    .progress-fill {
+        transition: none;
+    }
+}
+
+/* Print styles */
+@media print {
+    .skills-section {
+        background: white;
+        color: black;
+    }
+    
+    .skill-card,
+    .stat-card,
+    .category-btn {
+        background: white !important;
+        border: 1px solid black;
+        box-shadow: none;
+    }
+    
+    .skill-name,
+    .progress-percentage {
+        color: black !important;
+    }
+    
+    .progress-label {
+        color: #666 !important;
+    }
+}
+
+/* Focus states for accessibility */
+.category-btn:focus {
+    outline: 2px solid #3b82f6;
+    outline-offset: 2px;
+}
+
+/* Smooth scrolling */
+html {
+    scroll-behavior: smooth;
+}
+
+/* Performance optimizations */
+.skill-card,
+.stat-card,
+.category-btn {
+    will-change: transform;
+}
+
+/* Force white background for all skill cards */
+.skill-card,
+.skill-card:hover,
+.skill-card:focus,
+.skill-card:active {
+    background: white !important;
+    background-color: white !important;
+}
+
+/* Ensure text colors are always readable on white background */
+.skill-card .skill-name,
+.skill-card:hover .skill-name,
+.skill-card:focus .skill-name {
+    color: #27272a !important;
+}
+
+.skill-card .progress-label,
+.skill-card:hover .progress-label,
+.skill-card:focus .progress-label {
+    color: #65656d !important;
+}
+
+.skill-card .progress-percentage,
+.skill-card:hover .progress-percentage,
+.skill-card:focus .progress-percentage {
+    color: #27272a !important;
+}
+
+/* Clean animations */
+.skill-card:hover {
+    transform: translateY(-2px);
+}
+
+.stat-card:hover {
+    transform: translateY(-1px);
+}
+
+.category-btn:hover {
+    transform: translateY(-1px);
+}

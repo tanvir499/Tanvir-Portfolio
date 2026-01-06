@@ -1,5 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { Helmet } from "react-helmet";
+import { TypeAnimation } from 'react-type-animation';
+import { motion, AnimatePresence } from 'framer-motion';
 import { faMailBulk, faDownload } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
@@ -8,12 +10,21 @@ import {
 	faStackOverflow,
 	faInstagram,
 } from "@fortawesome/free-brands-svg-icons";
+import { 
+	SiReact, 
+	SiNodedotjs, 
+	SiJavascript,
+	SiMongodb,
+	SiExpress,
+	SiNextdotjs
+} from 'react-icons/si';
 
 import Logo from "../components/common/logo";
 import Footer from "../components/common/footer";
 import NavBar from "../components/common/navBar";
 import Article from "../components/homepage/article";
 import Works from "../components/homepage/works";
+import Skills from "../components/homepage/skills";
 import AllProjects from "../components/projects/allProjects";
 
 import INFO from "../data/user";
@@ -26,9 +37,21 @@ const Homepage = () => {
 	const [stayLogo, setStayLogo] = useState(false);
 	const [logoSize, setLogoSize] = useState(80);
 	const [oldLogoSize, setOldLogoSize] = useState(80);
+	const [imageLoaded, setImageLoaded] = useState(false);
+	const [showImage, setShowImage] = useState(false);
 
 	useEffect(() => {
 		window.scrollTo(0, 0);
+		
+		// Simulate image loading
+		const img = new Image();
+		img.onload = () => {
+			setTimeout(() => {
+				setImageLoaded(true);
+				setTimeout(() => setShowImage(true), 300);
+			}, 1500); // Simulate loading time
+		};
+		img.src = "home-page-pic.jpg";
 	}, []);
 
 	useEffect(() => {
@@ -89,16 +112,77 @@ const Homepage = () => {
 
 					<div className="homepage-container">
 						<div className="homepage-first-area">
-							<div className="homepage-first-area-left-side">
-								<div className="title homepage-title">
-									{INFO.homepage.title}
-								</div>
+							<motion.div 
+								className="homepage-first-area-left-side"
+								initial={{ opacity: 0, x: -50 }}
+								animate={{ opacity: 1, x: 0 }}
+								transition={{ 
+									duration: 0.8, 
+									ease: "easeOut"
+								}}
+							>
+								<motion.div 
+									className="title homepage-title"
+									initial={{ opacity: 0, y: 30 }}
+									animate={{ opacity: 1, y: 0 }}
+									transition={{ 
+										duration: 0.6,
+										delay: 0.2,
+										ease: "easeOut"
+									}}
+								>
+									<TypeAnimation
+										sequence={[
+											'Full-stack web developer.',
+											2000,
+											'MERN-stack web developer.',
+											2000,
+											'React.js developer.',
+											2000,
+											'Node.js developer.',
+											2000,
+											'JavaScript developer.',
+											2000,
+											'Frontend developer.',
+											2000,
+											'Backend developer.',
+											2000,
+										]}
+										wrapper="span"
+										speed={50}
+										style={{ 
+											fontSize: 'inherit',
+											fontWeight: 'inherit',
+											color: 'var(--primary-color)',
+											display: 'inline-block'
+										}}
+										repeat={Infinity}
+									/>
+								</motion.div>
 
-								<div className="subtitle homepage-subtitle">
+								<motion.div 
+									className="subtitle homepage-subtitle"
+									initial={{ opacity: 0, y: 30 }}
+									animate={{ opacity: 1, y: 0 }}
+									transition={{ 
+										duration: 0.6,
+										delay: 0.4,
+										ease: "easeOut"
+									}}
+								>
 									{INFO.homepage.description}
-								</div>
+								</motion.div>
 
-								<div className="homepage-resume-button-container">
+								<motion.div 
+									className="homepage-resume-button-container"
+									initial={{ opacity: 0, y: 30 }}
+									animate={{ opacity: 1, y: 0 }}
+									transition={{ 
+										duration: 0.6,
+										delay: 0.6,
+										ease: "easeOut"
+									}}
+								>
 									<button 
 										className="homepage-resume-button"
 										onClick={() => {
@@ -115,85 +199,332 @@ const Homepage = () => {
 										<FontAwesomeIcon icon={faDownload} className="resume-button-icon" />
 										<span>Download Resume</span>
 									</button>
-								</div>
-							</div>
+								</motion.div>
+							</motion.div>
 
-							<div className="homepage-first-area-right-side ">
+							<motion.div 
+								className="homepage-first-area-right-side"
+								initial={{ opacity: 0, x: 100 }}
+								animate={{ opacity: 1, x: 0 }}
+								transition={{ 
+									duration: 0.8, 
+									delay: 0.3,
+									ease: "easeOut"
+								}}
+							>
 								<div className="homepage-image-container">
+									{/* Rainbow Glow Background Effect - Very Low Opacity */}
+									<motion.div
+										className="visible-rainbow-glow"
+										animate={{
+											opacity: [0.1, 0.2, 0.1],
+											scale: [1, 1.01, 1],
+											rotate: [0, 360]
+										}}
+										transition={{
+											duration: 30,
+											repeat: Infinity,
+											ease: "easeInOut"
+										}}
+									/>
+
+									{/* Visible Tech Icons on Image Background */}
+									<div className="visible-tech-container">
+										{/* React Icon */}
+										<motion.div
+											className="visible-tech-icon visible-react"
+											animate={{
+												rotate: [0, 360],
+												y: [-10, 10, -10],
+												scale: [1, 1.3, 1],
+												opacity: [0.4, 0.6, 0.4]
+											}}
+											transition={{
+												duration: 8,
+												repeat: Infinity,
+												ease: "easeInOut"
+											}}
+										>
+											<SiReact />
+										</motion.div>
+
+										{/* JavaScript Icon */}
+										<motion.div
+											className="visible-tech-icon visible-js"
+											animate={{
+												y: [-8, 12, -8],
+												x: [-4, 4, -4],
+												rotate: [0, 180, 360],
+												scale: [0.9, 1.2, 0.9],
+												opacity: [0.3, 0.5, 0.3]
+											}}
+											transition={{
+												duration: 10,
+												repeat: Infinity,
+												ease: "easeInOut",
+												delay: 1
+											}}
+										>
+											<SiJavascript />
+										</motion.div>
+
+										{/* Node.js Icon */}
+										<motion.div
+											className="visible-tech-icon visible-node"
+											animate={{
+												rotate: [0, -360],
+												y: [-6, 14, -6],
+												x: [-3, 5, -3],
+												scale: [1, 1.4, 1],
+												opacity: [0.4, 0.6, 0.4]
+											}}
+											transition={{
+												duration: 12,
+												repeat: Infinity,
+												ease: "easeInOut",
+												delay: 2
+											}}
+										>
+											<SiNodedotjs />
+										</motion.div>
+
+										{/* Next.js Icon */}
+										<motion.div
+											className="visible-tech-icon visible-next"
+											animate={{
+												y: [-9, 11, -9],
+												rotate: [0, 270, 0],
+												scale: [0.95, 1.25, 0.95],
+												x: [-2, 3, -2],
+												opacity: [0.3, 0.5, 0.3]
+											}}
+											transition={{
+												duration: 14,
+												repeat: Infinity,
+												ease: "easeInOut",
+												delay: 3
+											}}
+										>
+											<SiNextdotjs />
+										</motion.div>
+
+										{/* Express.js Icon */}
+										<motion.div
+											className="visible-tech-icon visible-express"
+											animate={{
+												rotate: [0, 180, 360],
+												y: [-7, 9, -7],
+												x: [-2, 4, -2],
+												scale: [1, 0.8, 1.3],
+												opacity: [0.3, 0.4, 0.3]
+											}}
+											transition={{
+												duration: 9,
+												repeat: Infinity,
+												ease: "easeInOut",
+												delay: 4
+											}}
+										>
+											<SiExpress />
+										</motion.div>
+									</div>
+
 									<div className="homepage-image-wrapper">
-										<img
-											src="home-page-pic.jpg"
-											alt="about"
-											className="homepage-image"
-										/>
+										{/* Loading Animation */}
+										<AnimatePresence>
+											{!imageLoaded && (
+												<motion.div
+													className="image-loading-skeleton"
+													initial={{ opacity: 1 }}
+													exit={{ opacity: 0 }}
+													transition={{ duration: 0.5 }}
+												>
+													<div className="skeleton-shimmer"></div>
+													<div className="loading-dots">
+														<motion.div
+															className="loading-dot"
+															animate={{
+																scale: [1, 1.2, 1],
+																opacity: [0.5, 1, 0.5]
+															}}
+															transition={{
+																duration: 1.5,
+																repeat: Infinity,
+																ease: "easeInOut"
+															}}
+														/>
+														<motion.div
+															className="loading-dot"
+															animate={{
+																scale: [1, 1.2, 1],
+																opacity: [0.5, 1, 0.5]
+															}}
+															transition={{
+																duration: 1.5,
+																repeat: Infinity,
+																ease: "easeInOut",
+																delay: 0.2
+															}}
+														/>
+														<motion.div
+															className="loading-dot"
+															animate={{
+																scale: [1, 1.2, 1],
+																opacity: [0.5, 1, 0.5]
+															}}
+															transition={{
+																duration: 1.5,
+																repeat: Infinity,
+																ease: "easeInOut",
+																delay: 0.4
+															}}
+														/>
+													</div>
+													<motion.div
+														className="loading-text"
+														animate={{
+															opacity: [0.6, 1, 0.6]
+														}}
+														transition={{
+															duration: 2,
+															repeat: Infinity,
+															ease: "easeInOut"
+														}}
+													>
+														Loading...
+													</motion.div>
+													
+													<div className="loading-progress">
+														<motion.div
+															className="loading-progress-bar"
+															initial={{ width: "0%" }}
+															animate={{ width: "100%" }}
+															transition={{
+																duration: 2,
+																ease: "easeInOut",
+																repeat: Infinity
+															}}
+														/>
+													</div>
+												</motion.div>
+											)}
+										</AnimatePresence>
+
+										{/* Full Image Display */}
+										<AnimatePresence>
+											{showImage && (
+												<img
+													src="home-page-pic.jpg"
+													alt="about"
+													className="homepage-image-full"
+													style={{
+														width: "100%",
+														height: "100%",
+														objectFit: "contain",
+														objectPosition: "center center",
+														position: "relative",
+														zIndex: 2,
+														opacity: imageLoaded ? 1 : 0,
+														transition: "opacity 0.8s ease-out"
+													}}
+												/>
+											)}
+										</AnimatePresence>
 									</div>
 								</div>
-							</div>
+							</motion.div>
 						</div>
 
-						<div className="homepage-socials">
-							<a
-								href={INFO.socials.twitter}
-								target="_blank"
-								rel="noreferrer"
-							>
-								<FontAwesomeIcon
-									icon={faTwitter}
-									className="homepage-social-icon"
-								/>
-							</a>
-							<a
-								href={INFO.socials.github}
-								target="_blank"
-								rel="noreferrer"
-							>
-								<FontAwesomeIcon
-									icon={faGithub}
-									className="homepage-social-icon"
-								/>
-							</a>
-							<a
-								href={INFO.socials.stackoverflow}
-								target="_blank"
-								rel="noreferrer"
-							>
-								<FontAwesomeIcon
-									icon={faStackOverflow}
-									className="homepage-social-icon"
-								/>
-							</a>
-							<a
-								href={INFO.socials.instagram}
-								target="_blank"
-								rel="noreferrer"
-							>
-								<FontAwesomeIcon
-									icon={faInstagram}
-									className="homepage-social-icon"
-								/>
-							</a>
-							<a
-								href={`mailto:${INFO.main.email}`}
-								target="_blank"
-								rel="noreferrer"
-							>
-								<FontAwesomeIcon
-									icon={faMailBulk}
-									className="homepage-social-icon"
-								/>
-							</a>
-						</div>
+						<motion.div 
+							className="homepage-socials"
+							initial={{ opacity: 0, y: 30 }}
+							animate={{ opacity: 1, y: 0 }}
+							transition={{ 
+								duration: 0.8,
+								delay: 0.8,
+								ease: "easeOut"
+							}}
+						>
+							{[
+								{ icon: faTwitter, href: INFO.socials.twitter },
+								{ icon: faGithub, href: INFO.socials.github },
+								{ icon: faStackOverflow, href: INFO.socials.stackoverflow },
+								{ icon: faInstagram, href: INFO.socials.instagram },
+								{ icon: faMailBulk, href: `mailto:${INFO.main.email}` }
+							].map((social, index) => (
+								<motion.a
+									key={index}
+									href={social.href}
+									target="_blank"
+									rel="noreferrer"
+									initial={{ opacity: 0, y: 20 }}
+									animate={{ opacity: 1, y: 0 }}
+									transition={{ 
+										duration: 0.5,
+										delay: 1 + (index * 0.1),
+										ease: "easeOut"
+									}}
+									whileHover={{ 
+										scale: 1.2,
+										y: -5,
+										transition: { duration: 0.2 }
+									}}
+									whileTap={{ scale: 0.95 }}
+								>
+									<FontAwesomeIcon
+										icon={social.icon}
+										className="homepage-social-icon"
+									/>
+								</motion.a>
+							))}
+						</motion.div>
 
-						<div className="homepage-projects">
+						<motion.div 
+							className="homepage-projects"
+							initial={{ opacity: 0, y: 50 }}
+							whileInView={{ opacity: 1, y: 0 }}
+							viewport={{ once: true, margin: "-100px" }}
+							transition={{ duration: 0.8, ease: "easeOut" }}
+						>
 							<AllProjects />
-						</div>
+						</motion.div>
 
-						<div className="homepage-after-title">
-							<div className="homepage-articles">
+						<motion.div 
+							className="homepage-skills"
+							initial={{ opacity: 0, y: 50 }}
+							whileInView={{ opacity: 1, y: 0 }}
+							viewport={{ once: true, margin: "-100px" }}
+							transition={{ duration: 0.8, delay: 0.2, ease: "easeOut" }}
+						>
+							<Skills skills={INFO.skills} />
+						</motion.div>
+
+						<motion.div 
+							className="homepage-after-title"
+							initial={{ opacity: 0 }}
+							whileInView={{ opacity: 1 }}
+							viewport={{ once: true, margin: "-50px" }}
+							transition={{ duration: 0.6, ease: "easeOut" }}
+						>
+							<motion.div 
+								className="homepage-articles"
+								initial={{ opacity: 0, x: -30 }}
+								whileInView={{ opacity: 1, x: 0 }}
+								viewport={{ once: true }}
+								transition={{ duration: 0.8, delay: 0.2, ease: "easeOut" }}
+							>
 								{myArticles.map((article, index) => (
-									<div
+									<motion.div
 										className="homepage-article"
 										key={(index + 1).toString()}
+										initial={{ opacity: 0, y: 20 }}
+										whileInView={{ opacity: 1, y: 0 }}
+										viewport={{ once: true }}
+										transition={{ 
+											duration: 0.5, 
+											delay: 0.1 * index,
+											ease: "easeOut" 
+										}}
 									>
 										<Article
 											key={(index + 1).toString()}
@@ -202,14 +533,20 @@ const Homepage = () => {
 											description={article().description}
 											link={"/article/" + (index + 1)}
 										/>
-									</div>
+									</motion.div>
 								))}
-							</div>
+							</motion.div>
 
-							<div className="homepage-works">
+							<motion.div 
+								className="homepage-works"
+								initial={{ opacity: 0, x: 30 }}
+								whileInView={{ opacity: 1, x: 0 }}
+								viewport={{ once: true }}
+								transition={{ duration: 0.8, delay: 0.4, ease: "easeOut" }}
+							>
 								<Works />
-							</div>
-						</div>
+							</motion.div>
+						</motion.div>
 
 						<div className="page-footer">
 							<Footer />

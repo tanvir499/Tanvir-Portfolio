@@ -16,7 +16,7 @@ const INFO = {
 	},
 
 	homepage: {
-		title: "Mern-stack web developer.",
+		title: "Mern-stack developer.",
 		description:
 			"I am a mern stack developer with expertise in Javascript React.js. I have experience in building scalable, secure and reliable web applications using various frameworks and technologies. I enjoy solving complex problems and learning new skills. I am passionate about creating high-quality code that follows best practices and industry standards. I am always looking for new challenges and opportunities to grow as a developer.",
 	},
@@ -43,12 +43,12 @@ const INFO = {
 				skills: [
 					{ name: "React.js", level: 90, icon: "⚛️" },
 					{ name: "JavaScript", level: 95, icon: "🟨" },
-					{ name: "HTML5", level: 95, icon: "🧡" },
-					{ name: "CSS3", level: 90, icon: "🔵" },
-					{ name: "TypeScript", level: 80, icon: "🔷" },
-					{ name: "Tailwind CSS", level: 85, icon: "🎨" },
+					{ name: "HTML5", level: 95, icon: "🌐" },
+					{ name: "CSS3", level: 90, icon: "🎨" },
+					{ name: "TypeScript", level: 80, icon: "📘" },
+					{ name: "Tailwind CSS", level: 85, icon: "💨" },
 					{ name: "Bootstrap", level: 85, icon: "🅱️" },
-					{ name: "SASS/SCSS", level: 80, icon: "💗" },
+					{ name: "SASS/SCSS", level: 80, icon: "💎" },
 					{ name: "Next.js", level: 85, icon: "▲" },
 					{ name: "Vue.js", level: 75, icon: "💚" }
 				]

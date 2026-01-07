@@ -11,14 +11,13 @@ import Contact from "./pages/contact";
 import Notfound from "./pages/404";
 
 import MouseFollower from "./components/common/MouseFollower";
-import useSmoothScroll from "./hooks/useSmoothScroll";
 
 import { TRACKING_ID } from "./data/tracking";
 import "./app.css";
 
 function App() {
-	// Initialize smooth scrolling
-	useSmoothScroll();
+	// Initialize smooth scrolling - DISABLED
+	// useSmoothScroll();
 
 	useEffect(() => {
 		if (TRACKING_ID !== "") {

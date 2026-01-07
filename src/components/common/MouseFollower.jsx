@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import { useEffect, useState } from 'react';
 import { motion, useMotionValue, useSpring, AnimatePresence } from 'framer-motion';
 import './MouseFollower.css';
 
@@ -26,22 +26,37 @@ const Cursor = () => {
             mouseX.set(e.clientX);
             mouseY.set(e.clientY);
             
-            // Check if we're over navbar elements
+            // Check if we're over navbar elements - COMPLETELY DISABLE custom cursor
             const target = e.target;
             
-            // Ensure target exists and has the closest method
-            if (target && typeof target.closest === 'function') {
-                const isOverNavbar = target.closest('.nav-container, .navbar, .nav-background, .nav-list, .nav-item, .nav-link');
+            if (target) {
+                // More comprehensive navbar detection
+                const isNavbarElement = 
+                    // Direct class checks
+                    (target.classList && (
+                        target.classList.contains('nav-container') ||
+                        target.classList.contains('navbar') ||
+                        target.classList.contains('nav-background') ||
+                        target.classList.contains('nav-list') ||
+                        target.classList.contains('nav-item')
+                    )) ||
+                    // Parent element checks
+                    (target.closest && target.closest('.nav-container')) ||
+                    // Link inside navbar check
+                    (target.tagName === 'A' && target.closest && target.closest('.nav-container'));
                 
-                if (isOverNavbar) {
+                if (isNavbarElement) {
+                    // COMPLETELY HIDE custom cursor on navbar
                     setIsVisible(false);
                     setIsHovering(false);
                     setCursorVariant('default');
                     setCursorText('');
-                } else if (!isVisible) {
-                    setIsVisible(true);
+                    return; // Exit early for navbar
                 }
-            } else if (!isVisible) {
+            }
+            
+            // Show custom cursor for non-navbar elements
+            if (!isVisible) {
                 setIsVisible(true);
             }
         };
@@ -63,29 +78,46 @@ const Cursor = () => {
         const handleElementHover = (e) => {
             const target = e.target;
             
-            // Check if target exists and has the closest method
-            if (!target || typeof target.closest !== 'function') {
+            // Check if target exists
+            if (!target) {
                 setIsVisible(true);
                 return;
             }
             
-            // Check if hovering over navbar - show normal cursor
-            if (target.closest('.nav-container, .navbar, .nav-background, .nav-list, .nav-item, .nav-link')) {
-                setIsVisible(false); // Hide custom cursor
+            // Completely disable custom cursor for navbar area
+            const isNavbarElement = 
+                // Direct class checks
+                (target.classList && (
+                    target.classList.contains('nav-container') ||
+                    target.classList.contains('navbar') ||
+                    target.classList.contains('nav-background') ||
+                    target.classList.contains('nav-list') ||
+                    target.classList.contains('nav-item')
+                )) ||
+                // Parent element checks
+                (target.closest && target.closest('.nav-container')) ||
+                // Link inside navbar check
+                (target.tagName === 'A' && target.closest && target.closest('.nav-container'));
+            
+            if (isNavbarElement) {
+                setIsVisible(false);
                 setIsHovering(false);
                 setCursorVariant('default');
                 setCursorText('');
                 return;
             }
             
-            // Show custom cursor for other elements
+            // Show custom cursor for other elements only
             setIsVisible(true);
             
-            // Interactive elements
-            if (target.matches && target.matches('a, button, [role="button"], input, textarea, select')) {
-                // Skip if it's a navbar element
-                if (target.closest('.nav-container, .navbar, .nav-background, .nav-list, .nav-item, .nav-link')) {
+            // Interactive elements (excluding navbar)
+            if ((target.matches && target.matches('a, button, [role="button"], input, textarea, select'))) {
+                // Double check - skip if it's anywhere near navbar
+                if ((target.closest && target.closest('.nav-container'))) {
                     setIsVisible(false);
+                    setIsHovering(false);
+                    setCursorVariant('default');
+                    setCursorText('');
                     return;
                 }
                 setIsHovering(true);
@@ -93,31 +125,31 @@ const Cursor = () => {
                 setCursorText('CLICK');
             } 
             // Image and card elements
-            else if (target.matches && target.matches('.homepage-image-container, .homepage-image-wrapper, .homepage-image')) {
+            else if ((target.matches && target.matches('.homepage-image-container, .homepage-image-wrapper, .homepage-image'))) {
                 setIsHovering(true);
                 setCursorVariant('view');
                 setCursorText('VIEW');
             }
             // Skill cards
-            else if (target.matches && target.matches('.skill-card, .skill-icon-wrapper, .skill-icon')) {
+            else if ((target.matches && target.matches('.skill-card, .skill-icon-wrapper, .skill-icon'))) {
                 setIsHovering(true);
                 setCursorVariant('view');
                 setCursorText('EXPLORE');
             }
             // Social icons
-            else if (target.matches && target.matches('.homepage-social-icon, .homepage-social-icon-left')) {
+            else if ((target.matches && target.matches('.homepage-social-icon, .homepage-social-icon-left'))) {
                 setIsHovering(true);
                 setCursorVariant('hover');
                 setCursorText('SOCIAL');
             }
             // Category buttons
-            else if (target.matches && target.matches('.category-btn')) {
+            else if ((target.matches && target.matches('.category-btn'))) {
                 setIsHovering(true);
                 setCursorVariant('hover');
                 setCursorText('FILTER');
             }
             // Resume button
-            else if (target.matches && target.matches('.homepage-resume-button')) {
+            else if ((target.matches && target.matches('.homepage-resume-button'))) {
                 setIsHovering(true);
                 setCursorVariant('hover');
                 setCursorText('DOWNLOAD');
@@ -130,12 +162,34 @@ const Cursor = () => {
             }
         };
 
+        // Prevent any interference with navbar clicks
+        const handleClick = (e) => {
+            const target = e.target;
+            
+            // If clicking on navbar, don't interfere at all
+            if (target && (
+                (target.classList && (
+                    target.classList.contains('nav-container') ||
+                    target.classList.contains('navbar') ||
+                    target.classList.contains('nav-background') ||
+                    target.classList.contains('nav-list') ||
+                    target.classList.contains('nav-item')
+                )) ||
+                (target.closest && target.closest('.nav-container')) ||
+                (target.tagName === 'A' && target.closest && target.closest('.nav-container'))
+            )) {
+                // Completely ignore navbar clicks - let them proceed normally
+                return;
+            }
+        };
+
         // Add event listeners
         window.addEventListener('mousemove', handleMouseMove);
         window.addEventListener('mouseenter', handleMouseEnter);
         window.addEventListener('mouseleave', handleMouseLeave);
         window.addEventListener('mousedown', handleMouseDown);
         window.addEventListener('mouseup', handleMouseUp);
+        window.addEventListener('click', handleClick);
         document.addEventListener('mouseover', handleElementHover);
 
         return () => {
@@ -144,6 +198,7 @@ const Cursor = () => {
             window.removeEventListener('mouseleave', handleMouseLeave);
             window.removeEventListener('mousedown', handleMouseDown);
             window.removeEventListener('mouseup', handleMouseUp);
+            window.removeEventListener('click', handleClick);
             document.removeEventListener('mouseover', handleElementHover);
         };
     }, [mouseX, mouseY, isHovering, isClicking, isVisible]);

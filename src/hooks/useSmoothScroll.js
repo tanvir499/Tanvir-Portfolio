@@ -116,10 +116,11 @@ const useSmoothScroll = () => {
             }
         };
 
-        // Smooth scroll for anchor links
+        // Smooth scroll for anchor links ONLY (not React Router links)
         const handleAnchorClick = (e) => {
             const target = e.target.closest('a[href^="#"]');
-            if (target) {
+            // Only handle actual anchor links, not React Router Links
+            if (target && target.getAttribute('href').startsWith('#')) {
                 e.preventDefault();
                 const targetElement = document.querySelector(target.getAttribute('href'));
                 if (targetElement) {
@@ -132,6 +133,7 @@ const useSmoothScroll = () => {
                     }
                 }
             }
+            // Let React Router handle all other links
         };
 
         // Initialize current position

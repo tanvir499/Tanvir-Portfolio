@@ -90,48 +90,70 @@ const INFO = {
 
 	projects: [
 		{
-			title: "Project 1",
+			title: "Blood Donation Platform",
 			description:
-				"Lorem ipsum dolor sit amet. Et incidunt voluptatem ex tempore repellendus qui dicta nemo sit deleniti minima.",
-			logo: "https://cdn.jsdelivr.net/npm/programming-languages-logos/src/javascript/javascript.png",
-			linkText: "View Project",
-			link: "https://github.com",
+				"A comprehensive blood donation management system connecting donors with recipients. Features donor registration, blood request management, real-time availability tracking, and emergency notifications for life-saving donations.",
+			image: "https://images.unsplash.com/photo-1615461066841-6116e61058f4?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1000&q=80",
+			linkText: "View Live Project",
+			link: "https://blood-donation-clienr-side.netlify.app/",
+			technologies: ["React", "Node.js", "MongoDB", "Express", "JWT"],
+			githubLink: "https://github.com/tanvir499",
+			liveLink: "https://blood-donation-clienr-side.netlify.app/",
+			isExternal: true
 		},
 
 		{
-			title: "Project 2",
+			title: "Paw Mart - Pet Store",
 			description:
-				"Lorem ipsum dolor sit amet. Et incidunt voluptatem ex tempore repellendus qui dicta nemo sit deleniti minima.",
-			logo: "https://cdn.jsdelivr.net/npm/programming-languages-logos/src/python/python.png",
-			linkText: "View Project",
-			link: "https://github.com",
+				"A modern e-commerce platform for pet supplies and accessories. Features product catalog, shopping cart, user authentication, order management, and secure payment processing for pet lovers.",
+			image: "https://images.unsplash.com/photo-1601758228041-f3b2795255f1?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1000&q=80",
+			linkText: "View Live Project",
+			link: "https://paw-mart-client-side.netlify.app/",
+			technologies: ["React", "TypeScript", "Firebase", "Stripe", "Tailwind"],
+			githubLink: "https://github.com/tanvir499",
+			liveLink: "https://paw-mart-client-side.netlify.app/",
+			isExternal: true
 		},
 
 		{
-			title: "Project 3",
+			title: "App Hero - Mobile Showcase",
 			description:
-				"Lorem ipsum dolor sit amet. Et incidunt voluptatem ex tempore repellendus qui dicta nemo sit deleniti minima.",
-			logo: "https://cdn.jsdelivr.net/npm/programming-languages-logos/src/html/html.png",
-			linkText: "View Project",
-			link: "https://github.com",
+				"A sleek mobile app showcase platform featuring modern design, interactive demos, and comprehensive app information. Built with responsive design and smooth animations for optimal user experience.",
+			image: "https://images.unsplash.com/photo-1512941937669-90a1b58e7e9c?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1000&q=80",
+			linkText: "View Live Project",
+			link: "https://assignment-08-app-hero.netlify.app/",
+			technologies: ["HTML5", "CSS3", "JavaScript", "Bootstrap", "AOS"],
+			githubLink: "https://github.com/tanvir499",
+			liveLink: "https://assignment-08-app-hero.netlify.app/",
+			isExternal: true
 		},
 
 		{
-			title: "Project 4",
+			title: "Task Management Pro",
 			description:
-				"Lorem ipsum dolor sit amet. Et incidunt voluptatem ex tempore repellendus qui dicta nemo sit deleniti minima.",
-			logo: "https://cdn.jsdelivr.net/npm/programming-languages-logos/src/javascript/javascript.png",
-			linkText: "View Project",
-			link: "https://github.com",
+				"A collaborative task management application with real-time updates, drag-and-drop functionality, team collaboration features, and advanced project tracking capabilities.",
+			image: "https://images.unsplash.com/photo-1611224923853-80b023f02d71?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1000&q=80",
+			linkText: "Coming Soon",
+			link: "#",
+			technologies: ["React", "Node.js", "Socket.io", "PostgreSQL", "Redis"],
+			githubLink: "https://github.com/tanvir499",
+			liveLink: "#",
+			isExternal: false,
+			status: "In Development"
 		},
 
 		{
-			title: "Project 5",
+			title: "Weather Analytics Dashboard",
 			description:
-				"Lorem ipsum dolor sit amet. Et incidunt voluptatem ex tempore repellendus qui dicta nemo sit deleniti minima.",
-			logo: "https://cdn.jsdelivr.net/npm/programming-languages-logos/src/javascript/javascript.png",
-			linkText: "View Project",
-			link: "https://github.com",
+				"An advanced weather analytics platform with interactive charts, forecasting models, historical data analysis, and location-based weather insights for data-driven decisions.",
+			image: "https://images.unsplash.com/photo-1504608524841-42fe6f032b4b?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1000&q=80",
+			linkText: "Coming Soon",
+			link: "#",
+			technologies: ["React", "Python", "Chart.js", "OpenWeather API", "D3.js"],
+			githubLink: "https://github.com/tanvir499",
+			liveLink: "#",
+			isExternal: false,
+			status: "Planning"
 		},
 	],
 };

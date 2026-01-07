@@ -65,36 +65,40 @@
     transform: translate(-50%, -50%);
 }
 
-/* Hide default cursor */
+/* Hide default cursor EXCEPT for navbar */
 body {
     cursor: none !important;
 }
 
-/* Show normal cursor when hovering over navbar */
-body:has(.nav-container:hover, .navbar:hover, .nav-background:hover, .nav-list:hover, .nav-item:hover, .nav-link:hover) {
-    cursor: auto !important;
-}
-
-/* Show normal cursor for navbar */
-.nav-container, .navbar, .nav-background, .nav-list, .nav-item, .nav-link,
-.nav-container *, .navbar *, .nav-background *, .nav-list *, .nav-item *, .nav-link * {
+/* NAVBAR: Force normal cursor and ensure clickability - HIGHEST PRIORITY */
+.nav-container, .nav-container *, 
+.navbar, .navbar *, 
+.nav-background, .nav-background *, 
+.nav-list, .nav-list *, 
+.nav-item, .nav-item *, 
+.nav-item a {
     cursor: pointer !important;
+    pointer-events: auto !important;
+    position: relative !important;
+    z-index: 10000 !important;
 }
 
-/* Hide custom cursor for other elements */
-a, button, [role="button"], input, textarea, select,
+/* Ensure navbar links are always clickable */
+.nav-item a:hover,
+.nav-item a:focus,
+.nav-item a:active {
+    cursor: pointer !important;
+    pointer-events: auto !important;
+}
+
+/* Hide custom cursor for other interactive elements (NOT navbar) */
+body *:not(.nav-container):not(.nav-container *):not(.navbar):not(.navbar *):not(.nav-background):not(.nav-background *):not(.nav-list):not(.nav-list *):not(.nav-item):not(.nav-item *) a,
+body *:not(.nav-container):not(.nav-container *):not(.navbar):not(.navbar *):not(.nav-background):not(.nav-background *):not(.nav-list):not(.nav-list *):not(.nav-item):not(.nav-item *) button,
+body *:not(.nav-container):not(.nav-container *):not(.navbar):not(.navbar *):not(.nav-background):not(.nav-background *):not(.nav-list):not(.nav-list *):not(.nav-item):not(.nav-item *) [role="button"],
 .homepage-image-container, .skill-card, .project-card,
 .homepage-resume-button, .homepage-social-icon, .homepage-social-icon-left, .category-btn,
 .homepage-image-wrapper, .homepage-image, .skill-icon-wrapper, .skill-icon {
     cursor: none !important;
-}
-
-/* Exception: navbar elements should show normal cursor */
-.nav-container a, .navbar a, .nav-background a, .nav-list a, .nav-item a, .nav-link a,
-.nav-container button, .navbar button, .nav-background button, .nav-list button, .nav-item button, .nav-link button,
-.nav-container [role="button"], .navbar [role="button"], .nav-background [role="button"], 
-.nav-list [role="button"], .nav-item [role="button"], .nav-link [role="button"] {
-    cursor: pointer !important;
 }
 
 /* Responsive - Show default cursor on mobile */
@@ -114,8 +118,10 @@ a, button, [role="button"], input, textarea, select,
     .homepage-resume-button, .homepage-social-icon, .homepage-social-icon-left, .category-btn,
     .homepage-image-wrapper, .homepage-image, .skill-icon-wrapper, .skill-icon,
     .nav-container, .navbar, .nav-background, .nav-list, .nav-item, .nav-link,
-    .nav-container *, .navbar *, .nav-background *, .nav-list *, .nav-item *, .nav-link * {
+    .nav-container *, .navbar *, .nav-background *, .nav-list *, .nav-item *, .nav-link *,
+    .nav-item a, .nav-list a {
         cursor: pointer !important;
+        pointer-events: auto !important;
     }
 }
 
@@ -147,8 +153,10 @@ a, button, [role="button"], input, textarea, select,
     .homepage-resume-button, .homepage-social-icon, .homepage-social-icon-left, .category-btn,
     .homepage-image-wrapper, .homepage-image, .skill-icon-wrapper, .skill-icon,
     .nav-container, .navbar, .nav-background, .nav-list, .nav-item, .nav-link,
-    .nav-container *, .navbar *, .nav-background *, .nav-list *, .nav-item *, .nav-link * {
+    .nav-container *, .navbar *, .nav-background *, .nav-list *, .nav-item *, .nav-link *,
+    .nav-item a, .nav-list a {
         cursor: pointer !important;
+        pointer-events: auto !important;
     }
 }
 

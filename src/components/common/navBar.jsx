@@ -19,7 +19,7 @@ const NavBar = (props) => {
 										: "nav-item"
 								}
 							>
-								<Link to="/">Home</Link>
+								<Link to="/" onClick={() => console.log('Home clicked')}>Home</Link>
 							</li>
 							<li
 								className={
@@ -28,7 +28,16 @@ const NavBar = (props) => {
 										: "nav-item"
 								}
 							>
-								<Link to="/about">About</Link>
+								<Link 
+									to="/about" 
+									onClick={(e) => {
+										console.log('About clicked');
+										// Test: Force navigation if React Router fails
+										// setTimeout(() => window.location.href = '/about', 100);
+									}}
+								>
+									About
+								</Link>
 							</li>
 							<li
 								className={
@@ -37,7 +46,7 @@ const NavBar = (props) => {
 										: "nav-item"
 								}
 							>
-								<Link to="/projects">Projects</Link>
+								<Link to="/projects" onClick={() => console.log('Projects clicked')}>Projects</Link>
 							</li>
 							<li
 								className={
@@ -46,7 +55,7 @@ const NavBar = (props) => {
 										: "nav-item"
 								}
 							>
-								<Link to="/articles">Articles</Link>
+								<Link to="/articles" onClick={() => console.log('Articles clicked')}>Articles</Link>
 							</li>
 							<li
 								className={
@@ -55,7 +64,7 @@ const NavBar = (props) => {
 										: "nav-item"
 								}
 							>
-								<Link to="/contact">Contact</Link>
+								<Link to="/contact" onClick={() => console.log('Contact clicked')}>Contact</Link>
 							</li>
 						</ul>
 					</div>

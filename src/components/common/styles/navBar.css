@@ -18,7 +18,7 @@
 
 .nav-background {
 	width: 380px;
-	height: 40px;
+	height: 50px;
 	padding-left: 0%;
 	padding-right: 0%;
 	background: #fff;
@@ -33,7 +33,7 @@
 	align-items: center;
 	margin-left: -16px;
 	margin-right: 20px;
-	margin-top: 11px;
+	margin-top: 16px;
 }
 
 .nav-item {
@@ -65,10 +65,42 @@
 
 	.nav-background {
 		width: 80%;
-		height: 40px;
+		height: 50px;
 	}
 
 	.nav-item {
 		font-weight: bold;
 	}
+}
+/* Ensure navbar links are clickable */
+.nav-item a {
+	pointer-events: auto !important;
+	cursor: pointer !important;
+	position: relative;
+	z-index: 10001 !important;
+	display: block;
+	padding: 10px 12px;
+}
+
+.nav-item a:hover,
+.nav-item a:focus,
+.nav-item a:active {
+	pointer-events: auto !important;
+	cursor: pointer !important;
+}
+
+/* Ensure navbar container has proper pointer events */
+.nav-container, .navbar, .nav-background, .nav-list, .nav-item {
+	pointer-events: auto !important;
+	position: relative;
+	z-index: 10000 !important;
+}
+
+/* Make sure navbar is above everything */
+.navbar {
+	z-index: 10000 !important;
+}
+
+.nav-background {
+	z-index: 10000 !important;
 }

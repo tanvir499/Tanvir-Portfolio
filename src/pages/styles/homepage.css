@@ -42,6 +42,8 @@
 	display: flex;
 	justify-content: space-between;
 	align-items: center;
+	padding: 60px 40px;
+	margin: 20px 0;
 }
 
 .homepage-first-area-left-side {
@@ -505,8 +507,8 @@
 
 /* Modern Resume Button Styles */
 .homepage-resume-button-container {
-	margin-top: 30px;
-	margin-bottom: 20px;
+	margin-top: 15px;
+	margin-bottom: 10px;
 }
 
 /* Typing Animation Styles */
@@ -871,7 +873,8 @@
 		margin-top: -60px !important;
 	}
 }
-/* Left Side Social Icons - Fixed Vertical Column */
+/* Left Side Social Icons - Fixed Vertical Column (DISABLED - Now using banner version) */
+/*
 .homepage-socials-left {
 	position: fixed;
 	left: 25px;
@@ -909,14 +912,15 @@
 	box-shadow: 0 5px 20px rgba(20, 184, 166, 0.25);
 	transform: translateX(6px) scale(1.08);
 }
+*/
 
 /* Main Title Styles */
 .homepage-main-title {
-	font-size: 4rem;
+	font-size: 2.4rem;
 	font-weight: 800;
 	color: var(--primary-color);
-	margin-bottom: 10px;
-	line-height: 1.1;
+	margin-bottom: 2px;
+	line-height: 1.05;
 }
 
 /* Typing Subtitle Styles */
@@ -924,10 +928,11 @@
 	font-size: 1.5rem;
 	font-weight: 500;
 	color: var(--link-color);
-	margin-bottom: 20px;
+	margin-bottom: 8px;
 }
 
-/* Responsive Design for Left Social Icons */
+/* Responsive Design for Left Social Icons (DISABLED - Now using banner version) */
+/*
 @media (max-width: 1024px) {
 	.homepage-socials-left {
 		position: relative;
@@ -949,8 +954,9 @@
 	}
 	
 	.homepage-main-title {
-		font-size: 3rem;
+		font-size: 2rem;
 		text-align: center;
+		margin-bottom: 2px;
 	}
 	
 	.homepage-typing-subtitle {
@@ -973,7 +979,8 @@
 	}
 	
 	.homepage-main-title {
-		font-size: 2.5rem;
+		font-size: 1.6rem;
+		margin-bottom: 1px;
 	}
 	
 	.homepage-typing-subtitle {
@@ -983,7 +990,8 @@
 
 @media (max-width: 480px) {
 	.homepage-main-title {
-		font-size: 2rem;
+		font-size: 1.3rem;
+		margin-bottom: 1px;
 	}
 	
 	.homepage-typing-subtitle {
@@ -995,5 +1003,210 @@
 		padding: 8px;
 		width: 36px;
 		height: 36px;
+	}
+}
+*/
+/* Social Icons Inside Banner - Left Side */
+.homepage-socials-left-banner {
+	position: absolute;
+	left: -80px;
+	top: 15%;
+	transform: translateY(-50%);
+	display: flex;
+	flex-direction: column;
+	gap: 10px;
+	z-index: 100;
+	align-items: center;
+}
+
+.homepage-social-icon-left-banner {
+	font-size: 14px;
+	color: #64748b;
+	transition: all 0.3s ease;
+	padding: 8px;
+	border-radius: 50%;
+	background: rgba(255, 255, 255, 0.9);
+	backdrop-filter: blur(8px);
+	border: 1px solid rgba(0, 0, 0, 0.06);
+	box-shadow: 0 3px 12px rgba(0, 0, 0, 0.1);
+	width: 30px;
+	height: 30px;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	cursor: pointer;
+}
+
+.homepage-social-icon-left-banner:hover {
+	color: var(--link-color);
+	background: rgba(20, 184, 166, 0.1);
+	border-color: rgba(20, 184, 166, 0.3);
+	box-shadow: 0 5px 20px rgba(20, 184, 166, 0.25);
+	transform: translateX(6px) scale(1.08);
+}
+
+/* Update homepage-first-area to accommodate social icons */
+.homepage-first-area {
+	position: relative;
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+}
+
+/* Responsive Design for Banner Social Icons */
+@media (max-width: 1024px) {
+	.homepage-socials-left-banner {
+		position: relative;
+		left: auto;
+		top: auto;
+		transform: none;
+		flex-direction: row;
+		justify-content: center;
+		margin-top: 20px;
+		margin-bottom: 20px;
+		gap: 10px;
+		order: 3;
+	}
+	
+	.homepage-social-icon-left-banner {
+		width: 28px;
+		height: 28px;
+		font-size: 12px;
+		padding: 6px;
+	}
+	
+	.homepage-first-area-left-side {
+		order: 2;
+	}
+	
+	.homepage-first-area-right-side {
+		order: 1;
+	}
+	
+	.homepage-main-title {
+		font-size: 2.1rem;
+		text-align: center;
+		margin-bottom: 4px;
+	}
+	
+	.homepage-typing-subtitle {
+		font-size: 1.3rem;
+		text-align: center;
+	}
+}
+
+@media (max-width: 768px) {
+	.homepage-socials-left-banner {
+		gap: 8px;
+		margin-top: 15px;
+	}
+	
+	.homepage-social-icon-left-banner {
+		font-size: 10px;
+		padding: 5px;
+		width: 24px;
+		height: 24px;
+	}
+	
+	.homepage-main-title {
+		font-size: 2.5rem;
+	}
+	
+	.homepage-typing-subtitle {
+		font-size: 1.1rem;
+	}
+}
+
+@media (max-width: 480px) {
+	.homepage-social-icon-left-banner {
+		font-size: 9px;
+		padding: 4px;
+		width: 22px;
+		height: 22px;
+	}
+	
+	.homepage-main-title {
+		font-size: 2rem;
+	}
+	
+	.homepage-typing-subtitle {
+		font-size: 1rem;
+	}
+}
+/* Greeting Text and Waving Hand Animation */
+.greeting-text {
+	color: var(--secondary-color);
+	font-weight: 600;
+	margin-right: 4px;
+	font-size: 0.8em;
+}
+
+.waving-hand {
+	display: inline-block;
+	font-size: 0.9em;
+	margin-left: 6px;
+	transform-origin: 70% 70%;
+	cursor: pointer;
+}
+
+.waving-hand:hover {
+	animation: wave-fast 0.6s ease-in-out;
+}
+
+@keyframes wave-fast {
+	0%, 100% { transform: rotate(0deg) scale(1); }
+	25% { transform: rotate(20deg) scale(1.1); }
+	50% { transform: rotate(-10deg) scale(1.05); }
+	75% { transform: rotate(15deg) scale(1.1); }
+}
+
+/* Responsive Greeting Text */
+@media (max-width: 1024px) {
+	.greeting-text {
+		font-size: 0.75em;
+		margin-right: 3px;
+	}
+	
+	.waving-hand {
+		font-size: 0.85em;
+		margin-left: 5px;
+	}
+}
+
+@media (max-width: 768px) {
+	.greeting-text {
+		font-size: 0.7em;
+		margin-right: 3px;
+	}
+	
+	.waving-hand {
+		font-size: 0.8em;
+		margin-left: 4px;
+	}
+}
+
+@media (max-width: 480px) {
+	.greeting-text {
+		font-size: 0.65em;
+		margin-right: 2px;
+	}
+	
+	.waving-hand {
+		font-size: 0.75em;
+		margin-left: 3px;
+	}
+}
+/* Responsive adjustments - removed background styles */
+@media (max-width: 768px) {
+	.homepage-first-area {
+		padding: 40px 20px;
+		margin: 10px 0;
+	}
+}
+
+@media (max-width: 480px) {
+	.homepage-first-area {
+		padding: 30px 15px;
+		margin: 5px 0;
 	}
 }

@@ -22,7 +22,12 @@ import Logo from "../components/common/logo";
 import Footer from "../components/common/footer";
 import NavBar from "../components/common/navBar";
 import Article from "../components/homepage/article";
-import Skills from "../components/homepage/skills";
+import TechnologiesSection from "../components/homepage/TechnologiesSection";
+import ServicesSection from "../components/homepage/ServicesSection";
+import ProjectsShowcase from "../components/homepage/ProjectsShowcase";
+import EducationTimeline from "../components/homepage/EducationTimeline";
+import TestimonialsSection from "../components/homepage/TestimonialsSection";
+import ContactSection from "../components/homepage/ContactSection";
 
 import INFO from "../data/user";
 import SEO from "../data/seo";
@@ -103,37 +108,37 @@ const Homepage = () => {
 					</div>
 
 					<div className="homepage-container">
-						{/* Left Side Social Icons */}
-						<motion.div 
-							className="homepage-socials-left"
-							initial={{ opacity: 0, x: -30 }}
-							animate={{ opacity: 1, x: 0 }}
-							transition={{ duration: 0.8, delay: 0.8, ease: "easeOut" }}
-						>
-							{[
-								{ icon: faGithub, href: INFO.socials.github },
-								{ icon: faTwitter, href: INFO.socials.twitter },
-								{ icon: faStackOverflow, href: INFO.socials.stackoverflow },
-								{ icon: faInstagram, href: INFO.socials.instagram },
-								{ icon: faMailBulk, href: `mailto:${INFO.main.email}` }
-							].map((social, index) => (
-								<motion.a
-									key={index}
-									href={social.href}
-									target="_blank"
-									rel="noreferrer"
-									initial={{ opacity: 0, y: 20 }}
-									animate={{ opacity: 1, y: 0 }}
-									transition={{ duration: 0.5, delay: 1 + (index * 0.1), ease: "easeOut" }}
-									whileHover={{ scale: 1.2, x: 5, transition: { duration: 0.2 } }}
-									whileTap={{ scale: 0.95 }}
-								>
-									<FontAwesomeIcon icon={social.icon} className="homepage-social-icon-left" />
-								</motion.a>
-							))}
-						</motion.div>
-
 						<div className="homepage-first-area">
+							{/* Left Side Social Icons - Inside Banner */}
+							<motion.div 
+								className="homepage-socials-left-banner"
+								initial={{ opacity: 0, x: -30 }}
+								animate={{ opacity: 1, x: 0 }}
+								transition={{ duration: 0.8, delay: 0.8, ease: "easeOut" }}
+							>
+								{[
+									{ icon: faGithub, href: INFO.socials.github },
+									{ icon: faTwitter, href: INFO.socials.twitter },
+									{ icon: faStackOverflow, href: INFO.socials.stackoverflow },
+									{ icon: faInstagram, href: INFO.socials.instagram },
+									{ icon: faMailBulk, href: `mailto:${INFO.main.email}` }
+								].map((social, index) => (
+									<motion.a
+										key={index}
+										href={social.href}
+										target="_blank"
+										rel="noreferrer"
+										initial={{ opacity: 0, y: 20 }}
+										animate={{ opacity: 1, y: 0 }}
+										transition={{ duration: 0.5, delay: 1 + (index * 0.1), ease: "easeOut" }}
+										whileHover={{ scale: 1.2, x: 5, transition: { duration: 0.2 } }}
+										whileTap={{ scale: 0.95 }}
+									>
+										<FontAwesomeIcon icon={social.icon} className="homepage-social-icon-left-banner" />
+									</motion.a>
+								))}
+							</motion.div>
+
 							<motion.div
 								className="homepage-first-area-left-side"
 								initial={{ opacity: 0, x: -50 }}
@@ -146,7 +151,23 @@ const Homepage = () => {
 									animate={{ opacity: 1, y: 0 }}
 									transition={{ duration: 0.6, delay: 0.2, ease: "easeOut" }}
 								>
+									<span className="greeting-text">Hi I am </span>
 									{INFO.main.name}
+									<motion.span 
+										className="waving-hand"
+										animate={{ 
+											rotate: [0, 14, -8, 14, -4, 10, 0],
+											scale: [1, 1.1, 1, 1.1, 1, 1.1, 1]
+										}}
+										transition={{
+											duration: 2.5,
+											repeat: Infinity,
+											repeatDelay: 3,
+											ease: "easeInOut"
+										}}
+									>
+										👋
+									</motion.span>
 								</motion.div>
 
 								<motion.div 
@@ -369,15 +390,13 @@ const Homepage = () => {
 							</motion.div>
 						</div>
 
-						<motion.div
-							className="homepage-skills"
-							initial={{ opacity: 0, y: 50 }}
-							whileInView={{ opacity: 1, y: 0 }}
-							viewport={{ once: true, margin: "-100px" }}
-							transition={{ duration: 0.8, delay: 0.2, ease: "easeOut" }}
-						>
-							<Skills skills={INFO.skills} />
-						</motion.div>
+						{/* New Sections */}
+						<TechnologiesSection />
+						<ServicesSection />
+						<ProjectsShowcase />
+						<EducationTimeline />
+						<TestimonialsSection />
+						<ContactSection />
 
 						<motion.div
 							className="homepage-after-title"
